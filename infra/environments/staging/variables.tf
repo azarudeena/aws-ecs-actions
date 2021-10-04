@@ -7,5 +7,5 @@ variable "region" {
 variable "environment" {
   default     = "staging"
   type        = string
-  description = "The Region of the cluster"
+  description = "The Region of the cluster "
 }
