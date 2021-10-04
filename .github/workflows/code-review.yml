@@ -28,7 +28,7 @@ jobs:
         projectBaseDir: ./app
         args: >
           -Dsonar.organization=azarudeena
-          -Dsonar.projectKey=azarudeena_cicd-assign
+          -Dsonar.projectKey=azarudeena_aws-ecs-actions
           -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
           -Dsonar.sources=src/
           -Dsonar.test.exclusions=spec/**
