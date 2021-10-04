@@ -5,7 +5,7 @@ node_modules
 dist
 .cache
 
-
+.idea
 *.iml
 *.ipr
 *.iws
@@ -15,3 +15,4 @@ coverage
 .terraform.*
 *.tfvars
 terraform.tfstate*
+/.idea/
