@@ -1,7 +1,7 @@
 name: staging-deploy
 on:
   push:
-    paths-ignore:
+    paths:
       - 'app/**'
     branches:
         - main
