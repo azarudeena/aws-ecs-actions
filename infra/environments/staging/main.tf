@@ -2,7 +2,7 @@ module "staging_infra" {
   source = "../../tf-module"
 
   aws_region = var.region
-  environment = "staging"
+  environment = var.environment
   ecr_values = {
     repository_name = "registry-${var.environment}"
   }
