@@ -1,0 +1,65 @@
+name: coder-review
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  build:
+    name: Code-Review
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: setup node
+      uses: actions/setup-node@master
+      with:
+        node-version: 12.X
+    - name: install packages and Run tests
+      working-directory: ./app
+      run: |
+        yarn install
+        yarn lint
+        yarn test
+
+    - name: sonar-review
+      uses: sonarsource/sonarcloud-github-action@master
+      with:
+        projectBaseDir: ./app
+        args: >
+          -Dsonar.organization=azarudeena
+          -Dsonar.projectKey=azarudeena_cicd-assign
+          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+          -Dsonar.sources=src/
+          -Dsonar.test.exclusions=spec/**
+          -Dsonar.tests=spec/
+          -Dsonar.verbose=true
+      env:
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN}}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+    - name: infra-review
+      uses: accurics/terrascan-action@main
+      with:
+        iac_type: 'terraform'
+        iac_version: 'v14'
+        iac_dir: ./infra
+        policy_type: 'aws'
+        only_warn: true
+        sarif_upload: true
+
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: terrascan.sarif
+
+
+    - name: Post to a Slack channel on failure
+      if: failure()
+      id: slack
+      uses: slackapi/slack-github-action@v1.14.0
+      with:
+        channel-id: 'C02GKJ3EPTM'  # Slack channel id to post message
+        slack-message: 'Code Review Failed'
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
