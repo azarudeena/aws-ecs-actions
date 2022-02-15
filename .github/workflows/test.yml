@@ -1,0 +1,16 @@
+name: coder-review
+on:
+  push:
+    branches:
+      - "**"
+    paths-ignore:
+      - "app/**"
+      - ".github/**"
+
+jobs:
+  build:
+    name: Code-Review
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Hello World"
