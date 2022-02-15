@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'app/**'
+      - 'doc/**'
     branches:
         - main
 jobs:
