@@ -1,7 +1,15 @@
 name: coder-review
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches:
+      - "main"
+  push:
+    branches:
+      - "**"
+    paths:
+      - "app/**"
+      - ".github/**"
+
 jobs:
   build:
     name: Code-Review
