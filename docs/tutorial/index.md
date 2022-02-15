@@ -6,7 +6,7 @@ next_page: app.md
 
 Congratulations! You have started the container for this tutorial!
 Let's first explain the command that you just ran. In case you forgot,
-here's the command below:
+here's the command:
 
 ```cli
 docker run -d -p 80:80 docker/getting-started
