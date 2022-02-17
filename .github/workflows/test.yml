@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - "**"
-    paths-ignore:
+    paths:
       - "app/**"
       - ".github/**"
 
