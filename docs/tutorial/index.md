@@ -2,7 +2,7 @@
 next_page: app.md
 ---
 
-### The command you just ran
+## The command you just ran
 
 Congratulations! You have started the container for this tutorial!
 Let's first explain the command that you just ran. In case you forgot,
@@ -25,7 +25,7 @@ You'll notice a few flags being used. Here's some more info on them:
     docker run -dp 80:80 docker/getting-started
     ```
 
-### The Docker Dashboard
+## The Docker Dashboard
 
 Before going too far, we want to highlight the Docker Dashboard, which gives
 you a quick view of the containers running on your machine. It gives you quick
@@ -41,7 +41,7 @@ randomly created name. So, you'll most likely have a different name.
 ![Tutorial container running in Docker Dashboard](tutorial-in-dashboard.png)
 
 
-### What is a container?
+## What is a container?
 
 Now that you've run a container, what _is_ a container? Simply put, a container is
 simply another process on your machine that has been isolated from all other processes
@@ -56,7 +56,7 @@ in Linux for a long time. Docker has worked to make these capabilities approacha
 
     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/8fi7uSYlOdc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### What is a container image?
+## What is a container image?
 
 When running a container, it uses an isolated filesystem. This custom filesystem is provided 
 by a **container image**. Since the image contains the container's filesystem, it must contain everything 
